@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -9,47 +11,66 @@ public class Main {
 		
 		Aluno aluno = new Aluno();
 		
-		System.out.println("Nome: ");
-		aluno.setAluno(scanner.nextLine());
+		System.out.println("Nome do aluno: ");
+		aluno.setNome(scanner.nextLine());
 		
-		System.out.println("Nota: ");
+		System.out.println("Nota da aluno: ");
 		aluno.setNota(scanner.nextDouble());
 		
 		scanner.nextLine();
 		
-		while (true) {
-			System.out.println("\nEscolha uma opção: ");
-			System.out.println("1 - Adicionar Curso");
+		boolean continuar = true;
+		
+		while (continuar) {
+			System.out.println("\nEscolha um opção: ");
+			System.out.println("1 - Adiciona curso");
 			System.out.println("2 - Remover curso");
-			System.out.println("3 - Imprimir os dados");
-			System.out.println("4 - sair");
+			System.out.println("3 - Verificar nome do aluno");
+			System.out.println("4 - Imprimir dados");
+			System.out.println("5 - sair");
 			
 			int opcao = scanner.nextInt();
-			
 			scanner.nextLine();
 			
 			switch (opcao) {
-			case 1: System.out.print("Nome do curso: ");
-			        String adicionaCurso = scanner.nextLine();
-			        aluno.adicionarCursos(adicionaCurso);
-			        break;
-			case 2: System.out.print("Nome do curso a ser removido: ");
-					String removerCurso = scanner.nextLine();
-					aluno.removerCurso(removerCurso);
-					break;
-			
-			case 3: aluno.imprimirDados();
-					break;
-					
-			case 4:System.out.print("Encerrando");
-			       scanner.close();
-			       return;
+			case 1: 
+				System.out.println("Nome do curso: ");
+				aluno.adicionaCurso(scanner.nextLine());
+				break;
+				
+			case 2: 
+				System.out.println("Nome do curso: ");
+				aluno.removerCurso(scanner.nextLine());
+				break;
+				
+			case 3:
+				System.out.println("Nome para verificar: ");
+				String nomeParaVerificar = scanner.nextLine();
+				
+				if (aluno.verificarNome(nomeParaVerificar)) {
+					System.out.println("Nome já existe");
+				}else{
+					System.out.println("Aluno não existe");
+				}
+				
+				break;
+				
+			case 4:
+				aluno.imprimirDados();
+				break;
+				
+			case 5:
+				continuar = false;
+				break;
 			
 			default:
-				System.out.print("Opção inválida");
+				System.out.println("Opção inválida");
 			}
 		}
-
+		
+		scanner.close();
+		
+		
 	}
 
 }

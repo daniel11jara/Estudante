@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Aluno {
 	
-	private String aluno;
+	private String nome;
 	private double nota;
 	private List<String> cursos;
 	
@@ -11,12 +11,12 @@ public class Aluno {
 		this.cursos = new ArrayList<String>();
 	}
 
-	public String getAluno() {
-		return aluno;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setAluno(String aluno) {
-		this.aluno = aluno;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public double getNota() {
@@ -35,32 +35,60 @@ public class Aluno {
 		this.cursos = cursos;
 	}
 	
-	public boolean adicionarCursos(String curso) {
-		if (!cursos.contains(curso)) {
-			cursos.add(curso);
-			System.out.println("Curso adicionado: " + curso);
-			return true;
+	public void adicionaCurso(String curso) {
+		if (cursos.contains(curso)) {
+			System.out.println("Aluno já está matriculado");
 		}else {
-			System.out.println("Curso já existe");
-			return false;
+			cursos.add(curso);
+			System.out.println("Curso foi adicionado");
 		}
 	}
 	
-	public boolean removerCurso(String curso) {
-		if (curso.contains(curso)) {
+	public void removerCurso(String curso) {
+		if (cursos.contains(curso)) {
 			cursos.remove(curso);
-			System.out.println("Curso removido: " + curso);
-			return true;
+			System.out.println("Curso removido");
 		}else {
 			System.out.println("Curso não encontrado");
-			return false;
 		}
+	}
+	
+	public boolean verificarNome(String nome) {
+		return this.nome != null && this.nome.equalsIgnoreCase(nome);
 	}
 	
 	public void imprimirDados() {
-		System.out.println("Nome: " + aluno);
+		System.out.println("Nome: " + nome);
 		System.out.println("Nota: " + nota);
-		System.out.println("Cursos: " + cursos);
+		System.out.println("Curso: " + cursos);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
